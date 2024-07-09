@@ -10,7 +10,7 @@ import faiss
 from langchain.docstore import InMemoryDocstore
 from langchain.schema import Document
 
-# Preparar o Corpus de Documentos
+## Preparar o Corpus de Documentos
 documents = [
     "O gato está no telhado.",
     "O cachorro está no jardim.",
@@ -18,7 +18,7 @@ documents = [
     "O peixe está nadando no aquário."
 ]
 
-# Configurar a Recuperação de Documentos
+## Configurar a Recuperação de Documentos
 
 # Criar embeddings para os documentos
 embeddings = OllamaEmbeddings(model="mxbai-embed-large") 
@@ -42,7 +42,7 @@ index_to_docstore_id = {i: i for i in range(len(documents))}
 # Criar a store FAISS usando o índice criado manualmente
 vector_store = FAISS(embedding_function=embeddings, index=index, docstore=docstore, index_to_docstore_id=index_to_docstore_id)
 
-# Recuperação de Documentos
+## Recuperação de Documentos
 def retrieve_documents(query, k=2):
     results = vector_store.similarity_search(query, k=k)
     # Acessar o atributo 'page_content' dos resultados
@@ -52,7 +52,7 @@ query = "Onde está o gato?"
 retrieved_docs = retrieve_documents(query)
 st.write("Documentos recuperados:", retrieved_docs)
 
-# Geração de Resposta
+## Geração de Resposta
 
 # Criar o modelo de linguagem
 llm = Ollama(model='llama3:latest')

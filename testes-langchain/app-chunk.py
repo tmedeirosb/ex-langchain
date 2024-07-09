@@ -43,17 +43,3 @@ for i, chunk in enumerate(chunks[:3]):  # Display the first 3 chunks
     print(f"Chunk {i+1}:\n{'-'*10}\n{chunk}\n")
     print(f"{'-'*100}\n{'-'*100}\n")
 
-# prompt: Generate code to split sentences using spacy
-import spacy
-nlp = spacy.load("en_core_web_sm")
-
-def sentence_chunking_spacy(text):
-    doc = nlp(text)
-    sentences = [sent.text for sent in doc.sents]
-    return sentences
-
-chunks = sentence_chunking_spacy(text)
-
-for i, chunk in enumerate(chunks[:3]):  # Display the first 3 chunks
-    print(f"Chunk {i+1}:\n{'-'*10}\n{chunk}\n")
-    print(f"{'-'*100}\n{'-'*100}\n")
